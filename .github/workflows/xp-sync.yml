@@ -18,8 +18,12 @@ jobs:
         with:
           node-version: 20
 
+      - name: 📁 Change to correct directory
+        run: cd magnusiba-xp-sync
+
       - name: 📦 Install dependencies
         run: npm install
+        working-directory: magnusiba-xp-sync
 
       - name: 🚀 Run XP Sync Script
         env:
@@ -29,3 +33,4 @@ jobs:
           FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
           FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
         run: node syncXP.js
+        working-directory: magnusiba-xp-sync
